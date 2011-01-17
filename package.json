@@ -1,0 +1,31 @@
+{ "name": "vats"
+, "version": "0.0.1"
+, "description": "Prototype implementation of vats for Jetpack"
+, "homepage": "http://github.com/Gozala/vats/"
+, "keywords": ["vats", "q"]
+, "contributors":
+  [ "Irakli Gozalishvili <rfobic@gmail.com> (http://jeditoolkit.com)" ]
+, "repository":
+  { "type": "git"
+  , "url": "git://github.com/Gozala/vats.git"
+  }
+, "bugs": { "web": "http://github.com/Gozala/vats/issues/" }
+, "directories":
+  { "doc": "./docs"
+  , "lib": "./lib"
+  , "test": "./test"
+  }
+, "main": "./lib/vats.js"
+, "engines":
+  { "jetpack-sdk": ">=0.9.0"
+  }
+, "dependencies":
+  { "q": ">= 0.2.5"
+  , "q-comm": ">=0.1.1"
+  }
+, "licenses" :
+  [ { "type" : "MPL 1.1/LGPL 2.1/GPL 2.0"
+    , "url" : "http://www.mozilla.org/MPL/"
+    }
+  ]
+}
