@@ -123,6 +123,20 @@ high-level "notifications" module using a vat wrapper:
       Q.post(pNotifications, "notify", options);
     }
 
+## Demo ##
+
+In order to try this demo implementation you will have to do following steps:
+
+    cd {{addon-sdk}}/packages
+    git clone git://github.com/Gozala/vats.git
+    git clone git://github.com/Gozala/q.git
+    git clone git://github.com/Gozala/q-comm.git
+    cd q-comm
+    git fetch origin
+    git checkout -b origin/jetpack jetpack
+    cd ../vats
+    cfx run --e10s
+
 [Q-comm]:https://github.com/kriskowal/q-comm
 [web-send]:http://waterken.sourceforge.net/web_send/
 [Event-Loop Concurrency]:http://wiki.ecmascript.org/doku.php?id=strawman:concurrency
