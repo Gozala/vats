@@ -34,8 +34,49 @@ mechanics for:
 
 Optionally:
 
-- Sugar APIs can be build on top using [Proxies], as being prototyped in:
-  [meta-promise] and [actor] libs.
+- Sugar APIs can be build on top using [Proxies] as being prototyped in:
+  [meta-promise]. Sugared APIs will map as follows:
+
+<table>
+    <tr>
+       <th>de-usgared</th>
+       <th>sync</th>
+        <th>async</th>
+    </tr>
+    <tr>
+        <td>Q.get(promise, 'bar')</td>
+        <td>promise.bar</td>
+        <td>promise['! bar']</td>
+     </tr>
+     <tr>
+        <td>Q.put(promise, 'bar', 'foo')</td>
+        <td>promise.bar = 'foo'</td>
+        <td>promise['! bar'] = 'foo' </td>
+     </tr>
+      <tr>
+        <td>Q.post(promise, 'foo', a, b)</td>
+        <td>promise.foo(a, b)</td>
+        <td>promise['! foo'](a, b) </td>
+     </tr>
+</table>
+
+- Generator may be used to add further syntax sugar for saving continuations on
+  promise resolution / rejections. This was prototyped in an [actor] lib and
+  would map de-sugared API as follows:
+
+      Q.when(promise, function resolved(value) {
+        callback(null, data + foo);
+      }, function rejected(reason) {
+        callback(new Error(reason));
+      })
+
+
+      try {
+        callback(null, (yield promise) + foo);
+      } catch(exception) {
+        callback(exception);
+      }
+
 - Vats could be exposed for a content workers, that will allow similar wrappers
   (likely by third parties) in content context for a sugared access to a
   high-level APIs.
