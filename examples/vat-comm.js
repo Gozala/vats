@@ -33,6 +33,11 @@ function create(options) {
   return remote;
 }
 
-var vat = create({ module: 'traits' });
-var value = Q.post(vat, 'toString');
+var vat = create({ module: 'tabs' });
+var tab = Q.get(vat, '0');
+Q.when(Q.put(tab, 'url', 'data:text/html,<h1>Hello vat!</h1>'), function() {
+  console.log('look at the tab!!');
+}, function(reason) {
+  console.error('failure: ' + reason);
+})
 
